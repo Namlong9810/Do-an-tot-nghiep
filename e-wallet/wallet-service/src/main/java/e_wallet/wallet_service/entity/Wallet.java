@@ -19,23 +19,20 @@ import java.util.UUID;
 public class Wallet {
     @Id
     @GeneratedValue(strategy = GenerationType.UUID)
-    @Column(name = "wallet_id")
-    private UUID wallet_id;
+    @Column(name = "wallet_id", unique = true)
+    UUID wallet_id;
 
-    @Column(name = "user_id")
-    private UUID user_id;
+    @Column(name = "user_id", nullable = false, unique = true)
+    UUID user_id;
 
     @Column(name = "balance")
-    private BigDecimal balance;
-
-    @Column(name = "status")
-    private Integer status;
+    BigDecimal balance;
 
     @CreationTimestamp
     @Column(name = "created_at")
-    private Instant created_at;
+    Instant create_at;
 
     @UpdateTimestamp
     @Column(name = "updated_at")
-    private Instant update_at;
+    Instant updated_at;
 }
